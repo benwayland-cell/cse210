@@ -6,14 +6,12 @@ class Program
     {
         Menu journalMenu = new Menu();
 
+        JournalEntry testJournalEntry = journalMenu.CreateJournalEntry();
+        testJournalEntry.Display();
 
-        int userSelection = journalMenu.ProcessMenu();
+        // int userSelection = journalMenu.ProcessMenu();
 
-        // JournalEntry testJournalEntry = journalMenu.CreateJournalEntry();
-        // testJournalEntry.Display();
-
-        bool done = false;
-
+        /*bool done = false;
         do
         {
             switch (userSelection)
@@ -37,6 +35,6 @@ class Program
                     break;
             }
             
-        } while (!done);
+        } while (!done);*/
     }
 }
