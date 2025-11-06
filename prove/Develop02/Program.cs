@@ -6,9 +6,24 @@ class Program
     {
         Menu journalMenu = new Menu();
 
-        journalMenu.PrintMenu();
 
-        JournalEntry testJournalEntry = journalMenu.CreateJournalEntry();
-        testJournalEntry.Display();
+        int userSelection = journalMenu.ProcessMenu();
+
+        // JournalEntry testJournalEntry = journalMenu.CreateJournalEntry();
+        // testJournalEntry.Display();
+
+        switch (userSelection)
+        {
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+        }
     }
 }

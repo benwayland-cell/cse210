@@ -11,12 +11,23 @@ class Menu
         "5 - Quit"
     };
 
-    public void PrintMenu()
+    /* Process Menu will display the menu to the user, and read and validate the input and return the input.
+    Parameters:
+        None
+    */
+    public int ProcessMenu()
     {
-        foreach (string menuItem in _menuStrings)
+        int userSelection = 0;
+        do
         {
-            Console.WriteLine(menuItem);
-        }
+            foreach (string menuItem in _menuStrings)
+            {
+                Console.WriteLine(menuItem);
+            }
+            userSelection = int.Parse(Console.ReadLine());
+            Console.WriteLine();
+        } while (userSelection < 1 || userSelection > 5);
+        return userSelection;
     }
     
     public JournalEntry CreateJournalEntry()
