@@ -70,7 +70,7 @@ class Menu
         return entryToAdd;
     }
 
-/*Returns a string of the current date*/
+    /*Returns a string of the current date*/
     public string GetDate()
     {
         DateTime theCurrentTime = DateTime.Now;
@@ -78,7 +78,7 @@ class Menu
         return dateText;
     }
 
-/* Returns a random prompt */
+    /* Returns a random prompt */
     public string GetPrompt()
     {
         Random randomizer = new Random();
@@ -87,12 +87,19 @@ class Menu
         return randomPrompt;
     }
 
-/* Gets a response from the user given a prompt */
+    /* Gets a response from the user given a prompt */
     public string GetUserResponse(string prompt)
     {
         Console.WriteLine(prompt);
         string response = Console.ReadLine();
         Console.WriteLine();
         return response;
+    }
+    
+    /* Gets a file name from the user */
+    public string GetFileNameFromUser()
+    {
+        Console.Write("Filename: ");
+        return Console.ReadLine();
     }
 }
