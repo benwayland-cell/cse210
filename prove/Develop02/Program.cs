@@ -19,24 +19,24 @@ class Program
             switch (userSelection)
             {
                 case 1:
-                    // Create a new Entry Object
-                    // Call create on that object
-                    // Add the entry to the journal
+                    // Create a journal entry
                     JournalEntry newEntry = journalMenu.CreateJournalEntry();
                     currentJournal.AddEntry(newEntry);
                     break;
                 case 2:
-                    // Call journal.Display
+                    // display journal
                     currentJournal.Display();
                     break;
                 case 3:
                     // Save to a file
+                    currentJournal.SaveToFile("test");
                     break;
                 case 4:
                     // Read from a file
                     break;
                 case 5:
                     // Quit
+                    done = true;
                     break;
             }
             
