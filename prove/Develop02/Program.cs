@@ -33,6 +33,7 @@ class Program
                     break;
                 case 4:
                     // Read from a file
+                    currentJournal.ReadFromFile("test");
                     break;
                 case 5:
                     // Quit
