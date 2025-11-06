@@ -12,18 +12,31 @@ class Program
         // JournalEntry testJournalEntry = journalMenu.CreateJournalEntry();
         // testJournalEntry.Display();
 
-        switch (userSelection)
+        bool done = false;
+
+        do
         {
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
-                break;
-        }
+            switch (userSelection)
+            {
+                case 1:
+                // Create a new Entry Object
+                // Call create on that object
+                // Add the entry to the journal
+                    break;
+                case 2:
+                // Call journal.Display
+                    break;
+                case 3:
+                // Save to a file
+                    break;
+                case 4:
+                // Read from a file
+                    break;
+                case 5:
+                // Quit
+                    break;
+            }
+            
+        } while (!done);
     }
 }
