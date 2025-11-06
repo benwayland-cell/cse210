@@ -53,6 +53,7 @@ class Menu
         return userSelection;
     }
 
+    /*Returns a JournalEntry given input from the user*/
     public JournalEntry CreateJournalEntry()
     {
         /* Gets input from the user and stores the data */
@@ -69,6 +70,7 @@ class Menu
         return entryToAdd;
     }
 
+/*Returns a string of the current date*/
     public string GetDate()
     {
         DateTime theCurrentTime = DateTime.Now;
@@ -76,6 +78,7 @@ class Menu
         return dateText;
     }
 
+/* Returns a random prompt */
     public string GetPrompt()
     {
         Random randomizer = new Random();
@@ -83,7 +86,8 @@ class Menu
         string randomPrompt = _promptStrings[randomIndex];
         return randomPrompt;
     }
-    
+
+/* Gets a response from the user given a prompt */
     public string GetUserResponse(string prompt)
     {
         Console.WriteLine(prompt);
