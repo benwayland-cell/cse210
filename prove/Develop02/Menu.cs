@@ -2,8 +2,7 @@
 class Menu
 {
     public List<string> _menuStrings = new List<string> {
-        "Welcome to the Count",
-        "You can create, display, save, and read journal entries",
+        "Journal Entry System",
         "1 - Create Journal Entry",
         "2 - Display Journal",
         "3 - Save Journal to File",
@@ -100,6 +99,8 @@ class Menu
     public string GetFileNameFromUser()
     {
         Console.Write("Filename: ");
-        return Console.ReadLine();
+        string filename = Console.ReadLine();
+        Console.WriteLine();
+        return filename;
     }
 }

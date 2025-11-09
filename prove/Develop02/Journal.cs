@@ -1,11 +1,15 @@
 
-using System.IO; 
+using System.IO;
+using System.Runtime.InteropServices;
 
 class Journal
 {
     public List<JournalEntry> _entryList = new List<JournalEntry>();
 
-    public string _seperator = "~|~";
+    const int dateIndex = 0;
+    const int promptIndex = 1;
+    const int entryIndex = 2;
+    const int spaceIndex = 3;
 
     /* adds an entry to _entryList */
     public void AddEntry(JournalEntry entryToAdd)
@@ -31,7 +35,7 @@ class Journal
         {
             foreach (JournalEntry entry in _entryList)
             {
-                outputFile.WriteLine($"{entry._date}{_seperator}{entry._prompt}{_seperator}{entry._entry}");
+                outputFile.WriteLine($"{entry._date}\n{entry._prompt}\n{entry._entry}\n");
             }
         }
     }
@@ -39,27 +43,42 @@ class Journal
     /* replaces the current _entryList with one from the given file*/
     public void ReadFromFile(string filename)
     {
-        int dateIndex = 0;
-        int promptIndex = 1;
-        int entryIndex = 2;
-
         // Reset the entry list
         _entryList = new List<JournalEntry>();
 
         // Get the lines in the file
         string[] lines = System.IO.File.ReadAllLines(filename);
 
-        foreach (string line in lines)
+        // init the journal which we will add to the _entryList
+        JournalEntry journalEntryToAdd = new JournalEntry();
+
+        // for every line in the file
+        for (int fileIndex = 0; fileIndex < lines.Length; fileIndex++)
         {
-            string[] parts = line.Split(_seperator);
+            string line = lines[fileIndex];
 
-            // make a journal entry based off of what we read
-            JournalEntry journalEntryToAdd = new JournalEntry();
-            journalEntryToAdd._date = parts[dateIndex];
-            journalEntryToAdd._prompt = parts[promptIndex];
-            journalEntryToAdd._entry = parts[entryIndex];
-
-            _entryList.Add(journalEntryToAdd);
+            // depending on what line it is it will do something different
+            switch (fileIndex % (spaceIndex + 1))
+            {
+                case dateIndex:
+                    // this line is the date
+                    journalEntryToAdd._date = line;
+                    break;
+                case promptIndex:
+                    // this line is the prompt
+                    journalEntryToAdd._prompt = line;
+                    break;
+                case entryIndex:
+                    // this line is the entry
+                    journalEntryToAdd._entry = line;
+                    break;
+                case spaceIndex:
+                    // this line is the space
+                    // we also add the journalEntryToAdd to the _entryList
+                    _entryList.Add(journalEntryToAdd);
+                    journalEntryToAdd = new JournalEntry();
+                    break;
+            }
         }
     }
 }
