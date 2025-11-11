@@ -18,8 +18,8 @@ class Program
 
         Console.WriteLine(testFraction2.GetNumerator());
         Console.WriteLine(testFraction2.GetDenominator());
-        testFraction2.SetNumerator(50);
-        testFraction2.SetDenominator(2);
+        testFraction2.SetNumerator(100);
+        testFraction2.SetDenominator(4);
         Console.WriteLine(testFraction2.GetFractionString());
         Console.WriteLine(testFraction2.GetDecimalValue());
         Console.WriteLine();
@@ -31,5 +31,8 @@ class Program
         Console.WriteLine(testFraction3.GetFractionString());
         Console.WriteLine(testFraction3.GetDecimalValue());
         Console.WriteLine();
+
+        testFraction2.Simplify();
+        Console.WriteLine(testFraction2.GetFractionString());
     }
 }

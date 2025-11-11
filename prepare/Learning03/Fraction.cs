@@ -47,9 +47,34 @@ class Fraction
     {
         return $"{_numerator}/{_denominator}";
     }
-    
+
     public double GetDecimalValue()
     {
         return (double)_numerator / _denominator;
+    }
+    
+    public void Simplify()
+    {
+        int testDivisor;
+        if (_numerator > _denominator)
+        {
+            testDivisor = _denominator;
+        }
+        else
+        {
+            testDivisor = _numerator;
+        }
+
+        while (testDivisor > 1)
+        {
+            if (_numerator % testDivisor == 0 && _denominator % testDivisor == 0)
+            {
+                _numerator /= testDivisor;
+                _denominator /= testDivisor;
+                break;
+            }
+            
+            testDivisor--;
+        }
     }
 }
