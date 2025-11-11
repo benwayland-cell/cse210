@@ -53,8 +53,10 @@ class Fraction
         return (double)_numerator / _denominator;
     }
     
+    /* Simplifies the fraction */
     public void Simplify()
     {
+        // start with testDivisor being _numerator or _denominator, whichever is smaller
         int testDivisor;
         if (_numerator > _denominator)
         {
@@ -65,15 +67,18 @@ class Fraction
             testDivisor = _numerator;
         }
 
+        // test every number until we find a number that both are divisible by
         while (testDivisor > 1)
         {
+            // if they're both divisible by testDivisor
             if (_numerator % testDivisor == 0 && _denominator % testDivisor == 0)
             {
+                // divide them both be the testDivisor and end the function
                 _numerator /= testDivisor;
                 _denominator /= testDivisor;
                 break;
             }
-            
+
             testDivisor--;
         }
     }
