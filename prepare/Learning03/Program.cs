@@ -4,6 +4,11 @@ class Program
 {
     static void Main(string[] args)
     {
-        Console.WriteLine("Hello Learning03 World!");
+        Fraction testFraction1 = new Fraction();
+        Fraction testFraction2 = new Fraction(5);
+        Fraction testFraction3 = new Fraction(5, 10);
+
+        Console.WriteLine(testFraction1.GetFractionString());
+        Console.WriteLine(testFraction1.GetDecimalValue());
     }
 }
