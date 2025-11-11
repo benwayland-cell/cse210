@@ -4,6 +4,7 @@ class Program
 {
     static void Main()
     {
-        Console.WriteLine("Test Circle app");
+        Circle myCircle = new Circle(10);
+        Console.WriteLine(myCircle.GetCircleArea());
     }
 }
