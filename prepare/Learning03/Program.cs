@@ -10,5 +10,11 @@ class Program
 
         Console.WriteLine(testFraction1.GetFractionString());
         Console.WriteLine(testFraction1.GetDecimalValue());
+
+        Console.WriteLine(testFraction2.GetFractionString());
+        Console.WriteLine(testFraction2.GetDecimalValue());
+
+        Console.WriteLine(testFraction3.GetFractionString());
+        Console.WriteLine(testFraction3.GetDecimalValue());
     }
 }

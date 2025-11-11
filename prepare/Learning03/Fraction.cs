@@ -50,6 +50,6 @@ class Fraction
     
     public double GetDecimalValue()
     {
-        return _numerator / _denominator;
+        return (double)_numerator / _denominator;
     }
 }
