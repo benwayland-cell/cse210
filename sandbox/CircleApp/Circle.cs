@@ -2,11 +2,14 @@ class Circle
 {
     private double _radius;
 
-    private const double _pi = 3.145;
-
     public Circle(double radius)
     {
         _radius = radius;
+    }
+
+    public double GetRadius()
+    {
+        return _radius;
     }
 
     public void SetRadius(double radius)
@@ -16,6 +19,16 @@ class Circle
 
     public double GetCircleArea()
     {
-        return _pi * _radius * _radius;
+        return Math.PI * _radius * _radius;
+    }
+
+    public double GetCircumference()
+    {
+        return Math.PI * 2 * _radius;
+    }
+
+    public double GetDiameter()
+    {
+        return 2 * _radius;
     }
 }
