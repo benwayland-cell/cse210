@@ -17,12 +17,12 @@ class Word
         }
     }
 
-    private void Hide()
+    public void Hide()
     {
         _hidden = true;
     }
 
-    private void Show()
+    public void Show()
     {
         _hidden = false;
     }
