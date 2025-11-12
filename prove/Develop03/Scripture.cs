@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 class Scripture
 {
     private Reference _reference;
-    private List<Word> _text;
+    private List<List<Word>> _text;
 
-    public Scripture(Reference reference, List<Word> text)
+    public Scripture(Reference reference, List<List<Word>> text)
     {
         _reference = reference;
         _text = text;
@@ -14,9 +14,19 @@ class Scripture
 
     public void Display()
     {
-        foreach(Word word in _text)
+        // Console.Clear();
+        Console.WriteLine(_reference);
+
+        int verseNum = _reference.GetStartVerse();
+        foreach (List<Word> verse in _text)
         {
-            Console.Write(word);
+            Console.Write($"{verseNum}. ");
+            foreach (Word word in verse)
+            {
+                Console.Write($"{word} ");
+            }
+            Console.WriteLine();
+            verseNum++;
         }
     }
 }

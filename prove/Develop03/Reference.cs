@@ -30,4 +30,9 @@ class Reference
         }
         return $"{_book} {_chapter}:{_startVerse}";
     }
+
+    public int GetStartVerse()
+    {
+        return _startVerse;
+    }
 }
