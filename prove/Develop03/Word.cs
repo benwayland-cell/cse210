@@ -27,7 +27,7 @@ class Word
         _hidden = false;
     }
 
-    public string GetWord()
+    public override string ToString()
     {
         // if it's not hidden, just return the text
         if (!_hidden)
