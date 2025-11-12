@@ -41,7 +41,7 @@ class Program
             }
             else
             {
-                
+                // we are looking at a line that has a verse
             }
         }
         return scriptureList;
@@ -111,6 +111,20 @@ class Program
         return new Reference(book, chapter, startVerse, endVerse);
     }
 
+    /* Converts a string of a verse into a list of Word objects*/
+    static List<Word> StringToVerse(string verseString)
+    {
+        string[] words = verseString.Split(" ");
+
+        List<Word> willReturn = new List<Word>();
+        foreach (string word in words)
+        {
+            willReturn.Add(new Word(word));
+        }
+
+        return willReturn;
+    }
+
     static void Main(string[] args)
     {
         // Word testWord = new Word("test");
@@ -154,6 +168,17 @@ class Program
         // testScripture.Display();
 
 
-        Console.WriteLine(StringToReference("1 Nephi    3   :    7    -   8    "));
+        // Console.WriteLine(StringToReference("1 Nephi    3   :    7    -   8    "));
+
+
+        // string testString = "And it came to pass that I, Nephi, said unto my father: I will go and do the things which the Lord hath commanded, for I know that the Lord giveth no commandments unto the children of men, save he shall prepare a way for them that they may accomplish the thing which he commandeth them.";
+        // List<Word> testVerse = StringToVerse(testString);
+
+        // testVerse[3].Hide();
+
+        // foreach (Word word in testVerse)
+        // {
+        //     Console.Write(word);
+        // }
     }
 }
