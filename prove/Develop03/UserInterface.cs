@@ -211,7 +211,7 @@ class UserInterface
                 }
             }
 
-            Console.WriteLine("User input invalid, Try again");
+            Console.WriteLine($"User input invalid, Try again. ({startBound}-{endBound})");
             
         }
     }
@@ -219,8 +219,21 @@ class UserInterface
     /* Prompts the user to choose a scripture from the given list. It then runs the memorizer on that scripture */
     private static void ChooseScriptureToMemorize(List<Scripture> scriptureList)
     {
-        int userInput = -1;
+        // print each scripture in scriptureList and number each
+        for (int scriptureIndex = 0; scriptureIndex < scriptureList.Count(); scriptureIndex++)
+        {
+            Console.WriteLine($"{scriptureIndex + 1}:");
+            scriptureList[scriptureIndex].Display();
+            Console.WriteLine();
+        }
+        
+        // get a scripture number from the user
+        Console.WriteLine("Choose a scripture: ");
+        int userInput = GetUserInputInBounds(1, scriptureList.Count());
 
+        // get the scripture and run the program
+        Scripture scriptureToMemorize = scriptureList[userInput - 1];
+        RunMemorizeScripture(scriptureToMemorize );
     }
 
     public static void MainLoop()
@@ -240,12 +253,13 @@ class UserInterface
             }
 
             // get user input
-            userInput = int.Parse(Console.ReadLine());
+            userInput = GetUserInputInBounds(MemorizeScripture, Quit);
 
             switch (userInput)
             {
                 case MemorizeScripture:
                     Console.WriteLine("Memorize Scripture");
+                    ChooseScriptureToMemorize(scriptureList);
                     break;
 
                 case LoadScriptureFromFile:
