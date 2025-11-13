@@ -59,7 +59,7 @@ class Program
         //     Console.Write(word);
         // }
 
-        List<Scripture> testScriptureList = UserInterface.ConvertFileToScriptures("test");
+        // List<Scripture> testScriptureList = UserInterface.ConvertFileToScriptures("test");
 
         // foreach (Scripture scripture in testScriptureList)
         // {
@@ -76,6 +76,8 @@ class Program
         //     testScriptureList[1].Display();
         // }
 
-        UserInterface.RunMemorizeScripture(testScriptureList[1]);
+        // UserInterface.RunMemorizeScripture(testScriptureList[1]);
+
+        UserInterface.MainLoop();
     }
 }

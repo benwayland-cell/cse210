@@ -1,6 +1,19 @@
 
 class UserInterface
 {
+    // the prompt given for the main menu
+    private static string[] mainMenuPrompt = [
+        "Input a number to choose what you want to do.",
+        "1 - Memorize Scripture",
+        "2 - Load Scripture from file",
+        "3 - Write new Scripture",
+        "4 - Quit"
+    ];
+    private const int MemorizeScripture = 1;
+    private const int LoadScriptureFromFile = 2;
+    private const int WriteNewScripture = 3;
+    private const int Quit = 4;
+    
     /* Takes all of the scriptures in "filename" and puts it into a list of scriptures */
     public static List<Scripture> ConvertFileToScriptures(string filename)
     {
@@ -174,5 +187,43 @@ class UserInterface
 
         // clean up the scripture
         scripture.Show();
+    }
+
+    public static void MainLoop()
+    {
+        int userInput = 0;
+        bool done = false;
+
+        do
+        {
+            // print the main menu prompt
+            // Console.Clear();
+            foreach(string line in mainMenuPrompt)
+            {
+                Console.WriteLine(line);
+            }
+
+            // get user input
+            userInput = int.Parse(Console.ReadLine());
+
+            switch (userInput)
+            {
+                case MemorizeScripture:
+                    Console.WriteLine("Memorize Scripture");
+                    break;
+
+                case LoadScriptureFromFile:
+                    Console.WriteLine("Load scripture from file");
+                    break;
+
+                case WriteNewScripture:
+                    Console.WriteLine("Write new scripture");
+                    break;
+
+                case Quit:
+                    done = true;
+                    break;
+            }
+        } while (!done);
     }
 }
