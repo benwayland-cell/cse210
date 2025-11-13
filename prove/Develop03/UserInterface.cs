@@ -5,14 +5,14 @@ class UserInterface
     private static string[] mainMenuPrompt = [
         "Input a number to choose what you want to do.",
         "1 - Memorize Scripture",
-        "2 - Load Scripture from file",
-        "3 - Write new Scripture",
-        "4 - Quit"
+        "2 - Load Scriptures from file",
+        // "3 - Write new Scripture",
+        "3 - Quit"
     ];
     private const int MemorizeScripture = 1;
     private const int LoadScriptureFromFile = 2;
-    private const int WriteNewScripture = 3;
-    private const int Quit = 4;
+    // private const int WriteNewScripture = 3;
+    private const int Quit = 3;
     
     /* Takes all of the scriptures in "filename" and puts it into a list of scriptures */
     public static List<Scripture> ConvertFileToScriptures(string filename)
@@ -220,6 +220,7 @@ class UserInterface
     private static void ChooseScriptureToMemorize(List<Scripture> scriptureList)
     {
         // print each scripture in scriptureList and number each
+        Console.Clear();
         for (int scriptureIndex = 0; scriptureIndex < scriptureList.Count(); scriptureIndex++)
         {
             Console.WriteLine($"{scriptureIndex + 1}:");
@@ -238,7 +239,7 @@ class UserInterface
 
     public static void MainLoop()
     {
-        List<Scripture> scriptureList = new List<Scripture>();
+        List<Scripture> scriptureList = ConvertFileToScriptures("test");
         
         int userInput = 0;
         bool done = false;
@@ -246,7 +247,7 @@ class UserInterface
         do
         {
             // print the main menu prompt
-            // Console.Clear();
+            Console.Clear();
             foreach(string line in mainMenuPrompt)
             {
                 Console.WriteLine(line);
@@ -258,7 +259,7 @@ class UserInterface
             switch (userInput)
             {
                 case MemorizeScripture:
-                    Console.WriteLine("Memorize Scripture");
+                    // Console.WriteLine("Memorize Scripture");
                     ChooseScriptureToMemorize(scriptureList);
                     break;
 
@@ -266,9 +267,9 @@ class UserInterface
                     Console.WriteLine("Load scripture from file");
                     break;
 
-                case WriteNewScripture:
-                    Console.WriteLine("Write new scripture");
-                    break;
+                // case WriteNewScripture:
+                //     Console.WriteLine("Write new scripture");
+                //     break;
 
                 case Quit:
                     done = true;
