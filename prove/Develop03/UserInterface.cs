@@ -148,6 +148,7 @@ class UserInterface
             // show the scripture
             Console.Clear();
             scripture.Display();
+            Console.WriteLine("\nPress enter to continue or type 'quit' to finish:");
 
             // get user input. Also lowercase it
             userInput = Console.ReadLine().ToLower();
