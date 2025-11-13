@@ -5,7 +5,6 @@ class Scripture
 {
     private Reference _reference;
     private List<List<Word>> _text;
-    private int numOfHiddenWords = 0;
 
     private const int numOfWordsToHide = 3;
 
