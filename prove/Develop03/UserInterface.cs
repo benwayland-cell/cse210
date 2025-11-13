@@ -6,7 +6,6 @@ class UserInterface
         "Input a number to choose what you want to do.",
         "1 - Memorize Scripture",
         "2 - Load Scriptures from file",
-        // "3 - Write new Scripture",
         "3 - Quit"
     ];
     private const int MemorizeScriptureNum = 1;
@@ -15,7 +14,7 @@ class UserInterface
     private const int QuitNum = 3;
     
     /* Takes all of the scriptures in "filename" and puts it into a list of scriptures */
-    public static List<Scripture> ConvertFileToScriptures(string filename)
+    private static List<Scripture> ConvertFileToScriptures(string filename)
     {
         // init the list of scriptures we will return
         List<Scripture> scriptureList = new List<Scripture>();
@@ -149,7 +148,7 @@ class UserInterface
     Parameters:
         Scripture scripture: The scripture we will display
      */
-    public static void RunMemorizeScripture(Scripture scripture)
+    private static void RunMemorizeScripture(Scripture scripture)
     {
         string[] validExitStrings = ["quit", "q"];
         
@@ -237,7 +236,8 @@ class UserInterface
         RunMemorizeScripture(scriptureToMemorize );
     }
 
-    public static void LoadScriptureFromFile(ref List<Scripture> scriptureList)
+    /* Loads scriptures from a file and adds them to scriptureList */
+    private static void LoadScriptureFromFile(ref List<Scripture> scriptureList)
     {
         Console.Clear();
         Console.WriteLine("Input filename to read from.");
@@ -245,6 +245,7 @@ class UserInterface
         scriptureList.AddRange(ConvertFileToScriptures(filename));
     }
 
+    /* The loop that runs the main menu */
     public static void MainLoop()
     {
         List<Scripture> scriptureList = ConvertFileToScriptures("startScriptures");
@@ -275,10 +276,6 @@ class UserInterface
                     // Console.WriteLine("Load scripture from file");
                     LoadScriptureFromFile(ref scriptureList);
                     break;
-
-                // case WriteNewScriptureNum:
-                //     Console.WriteLine("Write new scripture");
-                //     break;
 
                 case QuitNum:
                     done = true;
