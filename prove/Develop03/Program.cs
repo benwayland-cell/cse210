@@ -67,13 +67,15 @@ class Program
         //     Console.WriteLine();
         // }
 
-        testScriptureList[1].Display();
-        bool done = false;
-        while (!done)
-        {
-            Console.WriteLine();
-            done = testScriptureList[1].HideWords();
-            testScriptureList[1].Display();
-        }
+        // testScriptureList[1].Display();
+        // bool done = false;
+        // while (!done)
+        // {
+        //     Console.WriteLine();
+        //     done = testScriptureList[1].HideWords();
+        //     testScriptureList[1].Display();
+        // }
+
+        UserInterface.RunMemorizeScripture(testScriptureList[1]);
     }
 }

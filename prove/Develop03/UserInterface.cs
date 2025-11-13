@@ -132,5 +132,46 @@ class UserInterface
         return willReturn;
     }
 
-    
+    /* Shows the scripture, waits for user to let the program run, hide words in scripture, loop.
+    Parameters:
+        Scripture scripture: The scripture we will display
+     */
+    public static void RunMemorizeScripture(Scripture scripture)
+    {
+        string[] validExitStrings = ["quit", "q"];
+        
+        string userInput = "";
+        bool allWordsHidden = false;
+        bool done = false;
+        while (!done)
+        {
+            // show the scripture
+            Console.Clear();
+            scripture.Display();
+
+            // get user input. Also lowercase it
+            userInput = Console.ReadLine().ToLower();
+
+            // check if all the words are hidden
+            if (allWordsHidden)
+            {
+                break;
+            }
+
+            // hide the words
+            allWordsHidden = scripture.HideWords();
+
+            // check if the user input is the same as a string in validExitStrings
+            foreach(string exitString in validExitStrings)
+            {
+                if (exitString == userInput)
+                {
+                    done = true;
+                }
+            }
+        }
+
+        // clean up the scripture
+        scripture.Show();
+    }
 }

@@ -90,4 +90,16 @@ class Scripture
 
         return notHiddenIndices;
     }
+
+    /* Shows all of the words in _text */
+    public void Show()
+    {
+        foreach (List<Word> verse in _text)
+        {
+            foreach(Word word in verse)
+            {
+                word.Show();
+            }
+        }
+    }
 }
