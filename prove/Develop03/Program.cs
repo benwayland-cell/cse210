@@ -1,4 +1,5 @@
-using System;
+using System.IO;
+using System.Runtime.InteropServices;
 
 class Program
 {
@@ -9,7 +10,16 @@ class Program
         List<Scripture> scriptureList = new List<Scripture>();
 
         // Get the lines in the file
-        string[] lines = System.IO.File.ReadAllLines(filename);
+        // string[] lines = System.IO.File.ReadAllLines(filename);         !!!!!!!!!!!need to fix!!!!!!!!!
+        string[] lines = [
+            "1 Nephi 3:7-8", 
+            "And it came to pass that I, Nephi, said unto my father: I will go and do the things which the Lord hath commanded, for I know that the Lord giveth no commandments unto the children of men, save he shall prepare a way for them that they may accomplish the thing which he commandeth them.",
+            "And it came to pass that when my father had heard these words he was exceedingly glad, for he knew that I had been blessed of the Lord.",
+            "",
+            "Mosiah 2:17",
+            "And behold, I tell you these things that ye may learn wisdom; that ye may learn that when ye are in the service of your fellow beings ye are only in the service of your God.",
+            ""
+        ];
 
 
         // initialization for the loop
@@ -23,25 +33,27 @@ class Program
 
         foreach (string line in lines)
         {
-            if (line == "")
+            if (line == "" && newReference != null && newVerses.Count > 0)
             {
                 // we're at a dividing empty line so we add the scripture to the list
-                nextLineNewScripture = true;
 
                 // add the current data we have to a new scripture in scriptureList
-                if (newReference != null && newVerses.Count > 0)
-                {
-                    // !!!!!!!!!!!! Do this !!!!!!!!!!!!!
-                }
+                scriptureList.Add(new Scripture(newReference, newVerses));
+                newReference = null;
+                newVerses = new List<List<Word>>();
+                
+                nextLineNewScripture = true;
             }
             else if (nextLineNewScripture)
             {
                 // we are now looking at the reference and need to parse it
                 newReference = StringToReference(line);
+                nextLineNewScripture = false;
             }
             else
             {
                 // we are looking at a line that has a verse
+                newVerses.Add(StringToVerse(line));
             }
         }
         return scriptureList;
@@ -180,5 +192,13 @@ class Program
         // {
         //     Console.Write(word);
         // }
+
+        List<Scripture> testScriptureList = ConvertFileToScriptures("test");
+
+        foreach (Scripture scripture in testScriptureList)
+        {
+            scripture.Display();
+            Console.WriteLine();
+        }
     }
 }
