@@ -61,10 +61,19 @@ class Program
 
         List<Scripture> testScriptureList = UserInterface.ConvertFileToScriptures("test");
 
-        foreach (Scripture scripture in testScriptureList)
+        // foreach (Scripture scripture in testScriptureList)
+        // {
+        //     scripture.Display();
+        //     Console.WriteLine();
+        // }
+
+        testScriptureList[1].Display();
+        bool done = false;
+        while (!done)
         {
-            scripture.Display();
             Console.WriteLine();
+            done = testScriptureList[1].HideWords();
+            testScriptureList[1].Display();
         }
     }
 }

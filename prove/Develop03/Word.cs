@@ -27,6 +27,11 @@ class Word
         _hidden = false;
     }
 
+    public bool IsHidden()
+    {
+        return _hidden;
+    }
+
     public override string ToString()
     {
         // if it's not hidden, just return the text
