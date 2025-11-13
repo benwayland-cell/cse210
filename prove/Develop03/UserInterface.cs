@@ -189,8 +189,44 @@ class UserInterface
         scripture.Show();
     }
 
+    /* Gets a number from the user until it is valid.
+    Parameters:
+        int startBound: The minimum number the output can be (inclusive)
+        int endBound: The maximum number the output can be (inclusive)
+    */
+    private static int GetUserInputInBounds(int startBound, int endBound)
+    {
+        string userInputString;
+        int userInputInt;
+        while (true)
+        {
+            userInputString = Console.ReadLine();
+
+
+            if (Int32.TryParse(userInputString, out userInputInt))
+            {
+                if (startBound <= userInputInt && userInputInt <= endBound)
+                {
+                    return userInputInt;
+                }
+            }
+
+            Console.WriteLine("User input invalid, Try again");
+            
+        }
+    }
+
+    /* Prompts the user to choose a scripture from the given list. It then runs the memorizer on that scripture */
+    private static void ChooseScriptureToMemorize(List<Scripture> scriptureList)
+    {
+        int userInput = -1;
+
+    }
+
     public static void MainLoop()
     {
+        List<Scripture> scriptureList = new List<Scripture>();
+        
         int userInput = 0;
         bool done = false;
 

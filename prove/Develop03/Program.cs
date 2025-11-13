@@ -78,6 +78,9 @@ class Program
 
         // UserInterface.RunMemorizeScripture(testScriptureList[1]);
 
+
         UserInterface.MainLoop();
+
+        
     }
 }
