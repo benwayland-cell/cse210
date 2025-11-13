@@ -5,7 +5,6 @@ class Scripture
 {
     private Reference _reference;
     private List<List<Word>> _text;
-
     private const int numOfWordsToHide = 3;
 
     public Scripture(Reference reference, List<List<Word>> text)
@@ -32,7 +31,7 @@ class Scripture
         }
     }
 
-    /* Hides as many words as "numOfHiddenWords" in "_text".
+    /* Hides as many words as "numOfWordsToHide" in "_text".
     Return:
         returns false by default
         returns true when all of the words are hidden after this
