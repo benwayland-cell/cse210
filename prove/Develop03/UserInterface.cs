@@ -9,10 +9,10 @@ class UserInterface
         // "3 - Write new Scripture",
         "3 - Quit"
     ];
-    private const int MemorizeScripture = 1;
-    private const int LoadScriptureFromFile = 2;
-    // private const int WriteNewScripture = 3;
-    private const int Quit = 3;
+    private const int MemorizeScriptureNum = 1;
+    private const int LoadScriptureFromFileNum = 2;
+    // private const int WriteNewScriptureNum = 3;
+    private const int QuitNum = 3;
     
     /* Takes all of the scriptures in "filename" and puts it into a list of scriptures */
     public static List<Scripture> ConvertFileToScriptures(string filename)
@@ -237,14 +237,22 @@ class UserInterface
         RunMemorizeScripture(scriptureToMemorize );
     }
 
+    public static void LoadScriptureFromFile(ref List<Scripture> scriptureList)
+    {
+        Console.Clear();
+        Console.WriteLine("Input filename to read from.");
+        string filename = Console.ReadLine();
+        scriptureList.AddRange(ConvertFileToScriptures(filename));
+    }
+
     public static void MainLoop()
     {
-        List<Scripture> scriptureList = ConvertFileToScriptures("test");
+        List<Scripture> scriptureList = ConvertFileToScriptures("startScriptures");
         
         int userInput = 0;
         bool done = false;
 
-        do
+        while(!done)
         {
             // print the main menu prompt
             Console.Clear();
@@ -254,27 +262,28 @@ class UserInterface
             }
 
             // get user input
-            userInput = GetUserInputInBounds(MemorizeScripture, Quit);
+            userInput = GetUserInputInBounds(MemorizeScriptureNum, QuitNum);
 
             switch (userInput)
             {
-                case MemorizeScripture:
+                case MemorizeScriptureNum:
                     // Console.WriteLine("Memorize Scripture");
                     ChooseScriptureToMemorize(scriptureList);
                     break;
 
-                case LoadScriptureFromFile:
-                    Console.WriteLine("Load scripture from file");
+                case LoadScriptureFromFileNum:
+                    // Console.WriteLine("Load scripture from file");
+                    LoadScriptureFromFile(ref scriptureList);
                     break;
 
-                // case WriteNewScripture:
+                // case WriteNewScriptureNum:
                 //     Console.WriteLine("Write new scripture");
                 //     break;
 
-                case Quit:
+                case QuitNum:
                     done = true;
                     break;
             }
-        } while (!done);
+        }
     }
 }
