@@ -48,6 +48,10 @@ public class Activity
     private void RunSpecificActivity()
     {
         Console.WriteLine("Empty Activity");
+
+        // test things for activity
+        GetLengthOfActivityFromUser();
+        Console.WriteLine(endLoopTime);
     }
 
 }
