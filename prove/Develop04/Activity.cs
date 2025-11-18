@@ -22,7 +22,12 @@ public class Activity
     /* Counts down from lengthOfTime to 0 with text printed to the console */
     protected void CountDownAnimation(int lengthOfTime)
     {
-        
+        for (int currentNum = lengthOfTime; currentNum > 0; currentNum--)
+        {
+            Console.Write($"{currentNum}\b");
+            Thread.Sleep(1000);
+        }
+        Console.WriteLine(" ");
     }
 
     /* Runs a circular animation for as long as lengthOfTime */
@@ -56,7 +61,7 @@ public class Activity
         GetLengthOfActivityFromUser();
         RunSpecificActivity();
 
-        Console.WriteLine("\nWell done!!\n");
+        Console.WriteLine("Well done!!\n");
         Console.WriteLine($"You have completed another {timeOfActivity} seconds of the {activityName}.");
     }
 
@@ -73,7 +78,7 @@ public class Activity
 
         // StallAnimation(5);
 
-        
+        CountDownAnimation(5);
     }
 
 }
