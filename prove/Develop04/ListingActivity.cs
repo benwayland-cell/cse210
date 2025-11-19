@@ -16,6 +16,23 @@ public class ListingActivity : Activity
 
     protected override void RunSpecificActivity()
     {
-        Console.WriteLine("Run listing activity");
+        Random random = new Random();
+        
+        Console.WriteLine("List as many responses you can to the following prompt:");
+        Console.WriteLine($" --- {promptList[random.Next(promptList.Length)]} ---");
+
+        Console.Write("You may begin in: ");
+        CountDownAnimation(5);
+        Console.WriteLine();
+
+        StartTimer();
+        int count = 0;
+        while (!CheckIfTimeIsUp())
+        {
+            Console.Write("> ");
+            Console.ReadLine();
+            count++;
+        }
+        Console.WriteLine($"You listed {count} items!\n");
     }
 }
