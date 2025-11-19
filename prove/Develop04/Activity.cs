@@ -18,7 +18,7 @@ public class Activity
     private void GetLengthOfActivityFromUser()
     {
         Console.WriteLine("How long, in seconds, would you like for your session? ");
-        _timeOfActivity = int.Parse(Console.ReadLine());
+        _timeOfActivity = Program.GetUserInputInBounds(0, 9999999);
         Console.WriteLine();
     }
 
