@@ -19,10 +19,13 @@ public class Activity
     {
         Console.WriteLine("How long, in seconds, would you like for your session? ");
         _timeOfActivity = int.Parse(Console.ReadLine());
-        
+        Console.WriteLine();
+    }
+
+    protected void StartTimer()
+    {
         DateTime startTime = DateTime.Now;
         _endLoopTime = startTime.AddSeconds(_timeOfActivity);
-        Console.WriteLine();
     }
 
     /* Counts down from lengthOfTime to 0 with text printed to the console */
@@ -68,7 +71,9 @@ public class Activity
         RunSpecificActivity();
 
         Console.WriteLine("Well done!!\n");
+        StallAnimation(5);
         Console.WriteLine($"You have completed another {_timeOfActivity} seconds of the {_activityName}.");
+        StallAnimation(5);
     }
 
     protected virtual void RunSpecificActivity()
