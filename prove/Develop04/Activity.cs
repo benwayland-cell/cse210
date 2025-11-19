@@ -70,9 +70,9 @@ public class Activity
         GetLengthOfActivityFromUser();
         RunSpecificActivity();
 
-        Console.WriteLine("Well done!!\n");
+        Console.WriteLine("Well done!!");
         StallAnimation(5);
-        Console.WriteLine($"You have completed another {_timeOfActivity} seconds of the {_activityName}.");
+        Console.WriteLine($"\nYou have completed another {_timeOfActivity} seconds of the {_activityName}.");
         StallAnimation(5);
     }
 
