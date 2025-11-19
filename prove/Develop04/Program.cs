@@ -5,10 +5,10 @@ class Program
 {
     public static string[] menuPrompt = [
         "Menu Options:",
-        "\t1. Start breathing activity",
-        "\t2. Start reflecting activity",
-        "\t3. Start listing activity",
-        "\t4. Quit"
+        "   1. Start breathing activity",
+        "   2. Start reflecting activity",
+        "   3. Start listing activity",
+        "   4. Quit"
     ];
 
     public static Activity[] activityList = [
@@ -16,6 +16,28 @@ class Program
         new ReflectionActivity(),
         new ListingActivity()
     ];
+
+    public static int GetUserInputInBounds(int startBound, int endBound)
+    {
+        string userInputString;
+        int userInputInt;
+        while (true)
+        {
+            userInputString = Console.ReadLine();
+
+
+            if (Int32.TryParse(userInputString, out userInputInt))
+            {
+                if (startBound <= userInputInt && userInputInt <= endBound)
+                {
+                    return userInputInt;
+                }
+            }
+
+            Console.Write($"User input invalid, Try again. ({startBound}-{endBound})");
+            
+        }
+    }
 
     static void Main(string[] args)
     {
@@ -30,7 +52,7 @@ class Program
     {
         PrintMenu();
         Console.Write("Select a choice from the menu: ");
-        int userInput = int.Parse(Console.ReadLine());
+        int userInput = GetUserInputInBounds(1, 4);
 
         if (userInput == 4)
         {
