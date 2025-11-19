@@ -1,21 +1,27 @@
 
 public class Activity
 {
-    private string activityName = "Empty Activity Name";
-    private string activityDescription = "Empty Activity Description";
-    private int timeOfActivity;
-    private DateTime endLoopTime;
+    private string _activityName = "Empty Activity Name";
+    private string _activityDescription = "Empty Activity Description";
+    private int _timeOfActivity;
+    private DateTime _endLoopTime;
+
+    public Activity(string activityName, string activityDescription)
+    {
+        _activityName = activityName;
+        _activityDescription = activityDescription;
+    }
 
     /* Gets how long the user wants the activity to be.
-    It also sets timeOfActivity and endLoopTime
+    It also sets _timeOfActivity and _endLoopTime
     */
     private void GetLengthOfActivityFromUser()
     {
         Console.WriteLine("How long, in seconds, would you like for your session? ");
-        timeOfActivity = int.Parse(Console.ReadLine());
+        _timeOfActivity = int.Parse(Console.ReadLine());
         
         DateTime startTime = DateTime.Now;
-        endLoopTime = startTime.AddSeconds(timeOfActivity);
+        _endLoopTime = startTime.AddSeconds(_timeOfActivity);
         Console.WriteLine();
     }
 
@@ -50,35 +56,35 @@ public class Activity
     /* Returns whether we have passed when the activity is to end */
     protected bool CheckIfTimeIsUp()
     {
-        return DateTime.Now >= endLoopTime;
+        return DateTime.Now >= _endLoopTime;
     }
 
     /* Runs things that all activities do and runs the specific method for each activity */
     public void RunActivity()
     {
         Console.Clear();
-        Console.WriteLine($"Welcome to the {activityName}\n\n{activityDescription}\n");
+        Console.WriteLine($"Welcome to the {_activityName}\n\n{_activityDescription}\n");
         GetLengthOfActivityFromUser();
         RunSpecificActivity();
 
         Console.WriteLine("Well done!!\n");
-        Console.WriteLine($"You have completed another {timeOfActivity} seconds of the {activityName}.");
+        Console.WriteLine($"You have completed another {_timeOfActivity} seconds of the {_activityName}.");
     }
 
-    private void RunSpecificActivity()
+    protected virtual void RunSpecificActivity()
     {
         Console.WriteLine("Empty Activity");
 
         // test things for activity
 
         // GetLengthOfActivityFromUser();
-        // Console.WriteLine(endLoopTime);
+        // Console.WriteLine(_endLoopTime);
         // Thread.Sleep(2000);
         // Console.WriteLine(CheckIfTimeIsUp());
 
         // StallAnimation(5);
 
-        CountDownAnimation(5);
+        // CountDownAnimation(5);
     }
 
 }
