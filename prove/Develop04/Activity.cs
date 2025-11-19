@@ -28,10 +28,10 @@ public class Activity
         _endLoopTime = startTime.AddSeconds(_timeOfActivity);
     }
 
-    /* Counts down from lengthOfTime to 0 with text printed to the console */
-    protected void CountDownAnimation(int lengthOfTime)
+    /* Counts down from duration to 0 with text printed to the console */
+    protected void CountDownAnimation(int duration)
     {
-        for (int currentNum = lengthOfTime; currentNum > 0; currentNum--)
+        for (int currentNum = duration; currentNum > 0; currentNum--)
         {
             Console.Write($"{currentNum}\b");
             Thread.Sleep(1000);
@@ -39,19 +39,20 @@ public class Activity
         Console.WriteLine(" ");
     }
 
-    /* Runs a circular animation for as long as lengthOfTime */
-    protected void StallAnimation(int lengthOfTime)
+    /* Runs a circular animation for as long as duration */
+    protected void StallAnimation(int duration)
     {
+        int sleepTime = 500;
+        
         DateTime startTime = DateTime.Now;
-        DateTime endTime = startTime.AddSeconds(lengthOfTime);
+        DateTime endTime = startTime.AddSeconds(duration);
 
-        string[] animationFrames = ["|", "/", "-", "\\"];
+        string animationFrames = "|/-\\";
 
-        for (int animationIndex = 0; DateTime.Now < endTime; animationIndex++)
+        for (int animationIndex = 0; DateTime.Now < endTime; animationIndex = ++animationIndex % animationFrames.Length)
         {
-            
-            Console.Write($"{animationFrames[animationIndex % animationFrames.Count()]}\b");
-            Thread.Sleep(500);
+            Console.Write($"{animationFrames[animationIndex]}\b");
+            Thread.Sleep(sleepTime);
         }
         Console.WriteLine(" ");
     }
@@ -67,7 +68,8 @@ public class Activity
     {
         // display activity info
         Console.Clear();
-        Console.WriteLine($"Welcome to the {_activityName}\n\n{_activityDescription}\n");
+        Console.WriteLine($"Welcome to the {_activityName}\n");
+        Console.WriteLine($"{_activityDescription}\n");
         GetLengthOfActivityFromUser();
 
         // Ask the user to ready themselves
