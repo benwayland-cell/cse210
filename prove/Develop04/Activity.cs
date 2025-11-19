@@ -65,14 +65,22 @@ public class Activity
     /* Runs things that all activities do and runs the specific method for each activity */
     public void RunActivity()
     {
+        // display activity info
         Console.Clear();
         Console.WriteLine($"Welcome to the {_activityName}\n\n{_activityDescription}\n");
         GetLengthOfActivityFromUser();
+
+        // Ask the user to ready themselves
+        Console.Clear();
+        Console.WriteLine("Get ready...");
+        StallAnimation(5);
+
         RunSpecificActivity();
 
+        // display ending message
         Console.WriteLine("Well done!!");
         StallAnimation(5);
-        Console.WriteLine($"\nYou have completed another {_timeOfActivity} seconds of the {_activityName}.");
+        Console.WriteLine($"You have completed another {_timeOfActivity} seconds of the {_activityName}.");
         StallAnimation(5);
     }
 

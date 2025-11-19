@@ -9,14 +9,8 @@ public class BreathingActivity : Activity
 
     protected override void RunSpecificActivity()
     {
-        // Ask the user to ready themselves
-        Console.Clear();
-        Console.WriteLine("Get ready...");
-        StallAnimation(5);
-
-        // start the activity timer
         StartTimer();
-
+        
         // loop until the time is up
         while (!CheckIfTimeIsUp())
         {
