@@ -31,17 +31,23 @@ public class Activity
     /* Counts down from duration to 0 with text printed to the console */
     protected void CountDownAnimation(int duration)
     {
+        Console.CursorVisible = false;
+
         for (int currentNum = duration; currentNum > 0; currentNum--)
         {
             Console.Write($"{currentNum}\b");
             Thread.Sleep(1000);
         }
         Console.WriteLine(" ");
+
+        Console.CursorVisible = true;
     }
 
     /* Runs a circular animation for as long as duration */
     protected void StallAnimation(int duration)
     {
+        Console.CursorVisible = false;
+        
         int sleepTime = 500;
         
         DateTime startTime = DateTime.Now;
@@ -55,12 +61,38 @@ public class Activity
             Thread.Sleep(sleepTime);
         }
         Console.WriteLine(" ");
+
+        Console.CursorVisible = true;
     }
 
     /* Returns whether we have passed when the activity is to end */
     protected bool CheckIfTimeIsUp()
     {
         return DateTime.Now >= _endLoopTime;
+    }
+
+    /* Makes a duplicate of a string[] a List<string> so you can manipulate it seperately */
+    protected List<string> MakeDuplicate(string[] givenList)
+    {
+        List<string> newList = new List<string>();
+
+        foreach (String str in givenList)
+        {
+            newList.Add(str);
+        }
+
+        return newList;
+    }
+
+    /* Returns a random element in the List<string> and also removes that string from the list. */
+    protected string GetAndPopList(ref List<string> givenList)
+    {
+        Random random = new Random();
+        int randomIndex = random.Next(givenList.Count());
+        string currentQuestion = givenList[randomIndex];
+        givenList.RemoveAt(randomIndex);
+
+        return currentQuestion;
     }
 
     /* Runs things that all activities do and runs the specific method for each activity */

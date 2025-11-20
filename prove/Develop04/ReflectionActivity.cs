@@ -47,10 +47,19 @@ public class ReflectionActivity : Activity
         Console.Clear();
         StartTimer();
 
+        List<string> currentQuestionList = MakeDuplicate(questionList);
+
         while (!CheckIfTimeIsUp())
         {
-            // print a random question
-            Console.Write(questionList[random.Next(questionList.Count())]);
+            // check if currentQuestionList is empty
+            if (currentQuestionList.Count() == 0)
+            {
+                currentQuestionList = MakeDuplicate(questionList);
+                // Console.WriteLine("\nended list\n");
+            }
+
+            // print the question
+            Console.Write(GetAndPopList(ref currentQuestionList));
             StallAnimation(15);
         }
         Console.WriteLine();
