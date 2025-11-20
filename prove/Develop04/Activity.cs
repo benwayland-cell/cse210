@@ -3,8 +3,14 @@ public class Activity
 {
     private string _activityName = "Empty Activity Name";
     private string _activityDescription = "Empty Activity Description";
+
+    // varibles used by the program
     private int _timeOfActivity;
     private DateTime _endLoopTime;
+
+    // logging data
+    private int _numberOfTimesRun = 0;
+    private int _secondsRun = 0;
 
     public Activity(string activityName, string activityDescription)
     {
@@ -116,6 +122,10 @@ public class Activity
         StallAnimation(5);
         Console.WriteLine($"You have completed another {_timeOfActivity} seconds of the {_activityName}.");
         StallAnimation(5);
+
+        // log the data
+        _numberOfTimesRun++;
+        _secondsRun += _timeOfActivity;
     }
 
     protected virtual void RunSpecificActivity()
