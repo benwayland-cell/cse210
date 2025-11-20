@@ -50,7 +50,7 @@ public class Activity
     }
 
     /* Runs a circular animation for as long as duration */
-    protected void StallAnimation(int duration)
+    public static void StallAnimation(int duration)
     {
         Console.CursorVisible = false;
         
@@ -99,6 +99,12 @@ public class Activity
         givenList.RemoveAt(randomIndex);
 
         return currentQuestion;
+    }
+
+    /* Gets the data we logged as a string */
+    public string GetLogAsString()
+    {
+        return $"{_activityName}\nNumber of Times ran: {_numberOfTimesRun}\nTime in seconds run: {_timeOfActivity}\n";
     }
 
     /* Runs things that all activities do and runs the specific method for each activity */

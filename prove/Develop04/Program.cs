@@ -8,7 +8,8 @@ class Program
         "   1. Start breathing activity",
         "   2. Start reflecting activity",
         "   3. Start listing activity",
-        "   4. Quit"
+        "   4. Log data to file",
+        "   5. Quit"
     ];
 
     public static Activity[] activityList = [
@@ -39,6 +40,17 @@ class Program
         }
     }
 
+    public static void LogDataToFile(string filename)
+    {
+        using (StreamWriter outputFile = new StreamWriter(filename))
+        {
+            foreach (Activity activity in activityList)
+            {
+                outputFile.WriteLine(activity.GetLogAsString());
+            }
+        }
+    }
+
     static void Main(string[] args)
     {
         while (RunMenu());
@@ -52,11 +64,20 @@ class Program
     {
         PrintMenu();
         Console.Write("Select a choice from the menu: ");
-        int userInput = GetUserInputInBounds(1, 4);
+        int userInput = GetUserInputInBounds(1, 5);
 
-        if (userInput == 4)
+        if (userInput == 5)
         {
             return false;
+        }
+        else if (userInput == 4)
+        {
+            Console.Write("\nWhere do you want to log the current data to? ");
+            string filename = Console.ReadLine();
+            LogDataToFile(filename);
+            Console.WriteLine($"Logged the data to '{filename}'.");
+            Activity.StallAnimation(5);
+            return true;
         }
 
         activityList[userInput - 1].RunActivity();
