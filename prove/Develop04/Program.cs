@@ -1,6 +1,12 @@
 using System;
 using System.Reflection.Metadata;
 
+/*
+I exceeded expectations by making it so you don't repeat randomly generated questions in ReflectionActivity.
+I also added functionality to log the number of times an activity has been run, and how long in seconds it has been run.
+You can also log the saved data to a file.
+*/
+
 class Program
 {
     public static string[] menuPrompt = [
